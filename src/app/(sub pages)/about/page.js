@@ -1,12 +1,10 @@
 import Image from "next/image";
-import bg from "../../../../public/background/about-background.png";
+import bg from "../../../../public/background/about-bg.jpg";
 import RenderModel from "@/components/RenderModel";
 // import HatModel from "@/components/models/HatModel";
 import AboutDetails from "@/components/about";
 import dynamic from "next/dynamic";
-const HatModel = dynamic(() => import("@/components/models/HatModel"), {
-    ssr: false,
-});
+import {Pikachu} from "@/components/models/Pikachu";
 
 export const metadata = {
     title: "About",
@@ -20,12 +18,12 @@ export default function Home() {
                 priority
                 sizes="100vw"
                 alt="Next.js Portfolio website's about page background image"
-                className="-z-50 fixed top-0 left-0 w-full h-full object-cover object-center opacity-50"
+                className="-z-50 fixed top-0 left-0 w-full h-full object-cover object-center"
             />
 
             <div className="absolute inset-0 flex items-center justify-center z-10">
                 <RenderModel>
-                    <HatModel />
+                    <Pikachu />
                 </RenderModel>
             </div>
 
@@ -36,7 +34,7 @@ export default function Home() {
                         An1zo
                     </h1>
                     <p className="font-light text-foreground text-lg">
-                        Meet the yourself behind this portfolio
+                        First of all, get to know yourself before reading this portfolio.
                     </p>
                 </div>
             </div>
