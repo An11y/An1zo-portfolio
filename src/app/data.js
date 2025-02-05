@@ -10,7 +10,7 @@ export const projectsData = [
   },
   {
     id: 2,
-    name: "WILL BE SOON",
+    name: "COMING SOON",
     description: "In the process of completion",
     date: "2025-02-06",
     demoLink: "https://github.com/An11y",
