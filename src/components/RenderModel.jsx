@@ -11,7 +11,7 @@ const RenderModel = ({ children, className }) => {
         <div className="w-full h-screen flex justify-center items-center relative pointer-events-none">
             {/* Контейнер для 3D-модели */}
             <div
-                className="relative w-full max-w-[500px] h-[60vh] min-h-[300px] sm:h-[500px] pointer-events-auto"
+                className="relative w-full max-w-[500px] h-[80vh] min-h-[300px] sm:h-[500px] pointer-events-auto"
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
             >
