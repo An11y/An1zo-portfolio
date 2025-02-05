@@ -12,7 +12,7 @@ const Modal = ({ onClose, toggle }) => {
             py-8 px-6 xs:px-10 sm:px-16 rounded shadow-glass-inset text-center space-y-8
             "
             >
-                <p className="font-light">Are you seriously going to turn on the background music? It's gonna mess with your head!</p>
+                <p className="font-light">Are you seriously going to turn on the background music? It&apos;s gonna mess with your head!</p>
                 <div className="flex items-center justify-center space-x-4">
                     <button
                         onClick={toggle}
