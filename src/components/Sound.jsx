@@ -6,13 +6,13 @@ import { createPortal } from "react-dom";
 
 const Modal = ({ onClose, toggle }) => {
     return createPortal(
-        <div className="fixed inset-0 bg-background/60 backdrop-blur-sm flex items-center justify-center">
+        <div className="fixed inset-0 bg-background/60 backdrop-blur-sm flex items-center justify-center z-50">
             <div
                 className="bg-background/20 border border-accent/30 border-solid backdrop-blur-[6px]
             py-8 px-6 xs:px-10 sm:px-16 rounded shadow-glass-inset text-center space-y-8
             "
             >
-                <p className="font-light">Do you really want to play the background music, it can harm you mentally?</p>
+                <p className="font-light">Are you seriously going to turn on the background music? It's gonna mess with your head!</p>
                 <div className="flex items-center justify-center space-x-4">
                     <button
                         onClick={toggle}

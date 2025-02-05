@@ -5,9 +5,9 @@
 @layer base {
     :root {
         --background: 27 27 27;
-        --foreground: 225 225 225;
-        --muted: 115 115 115;
-        --accent: 254 254 91;
+        --foreground: 220 220 220;
+        --muted: 140 140 140;
+        --accent: 50, 110, 135;
     }
 }
 

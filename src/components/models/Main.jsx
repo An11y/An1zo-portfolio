@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React, { useRef } from 'react'
 import { useGLTF, useAnimations } from '@react-three/drei'
@@ -15,8 +15,8 @@ export function Main(props) {
     const { actions } = useAnimations(animations, group)
     return (
         <group ref={group} {...props} dispose={null}
-               position={[0, -3.1, 0]}
-               scale={[1.4, 1.4, 1.4]}
+               position={[0, -2.4, 0]}
+               scale={[1.05, 1.05, 1.05]}
         >
             <group name="Sketchfab_Scene">
                 <group name="Sketchfab_model" rotation={[-Math.PI / 2, 0, 0]}>

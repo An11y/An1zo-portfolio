@@ -13,21 +13,20 @@ const AboutDetails = () => {
                     <div className='col-span-8 row-span-2 flex-col items-start '>
                         <h2 className='text-left text-xl md:text-2xl w-full capitalize'>Architect Of Enchantments</h2>
                         <p className='font-light text-xs sm:text-sm md:text-base'>
-                            I am a full-stack developer with a passion for creating beautiful and functional web
-                            applications. I have experience in building web applications using modern technologies like
-                            React, Node.js, and Express.js. I am a self-taught developer who is always looking to learn
-                            new things and improve my skills.
+                            I am a full-stack developer with a strong focus on web application architecture. Using React, Java, and Python, I create scalable and high-quality applications that meet both user and business needs.<br/>
+
+                            With experience in both front-end and back-end development, I specialize in building systems that ensure performance, stability, and scalability. I work well independently or in a team, always looking to enhance my skills. My goals are to secure a high-paying role in a leading tech company and eventually launch my own startup.
                         </p>
                     </div>
                 </ItemLayout>
                 <ItemLayout className={'col-span-full xs:col-span-6 lg:col-span-4 text-accent'}>
                     <p className='font-semibold w-full text-left text-2xl sm:text-5xl'>
-                        25+ <sub className='font-semibold text-base'>clients</sub>
+                        5+ <sub className='font-semibold text-base'>clients</sub>
                     </p>
                 </ItemLayout>
                 <ItemLayout className={'col-span-full xs:col-span-6 md:col-span-4 text-accent'}>
                     <p className='font-semibold w-full text-left text-2xl sm:text-5xl'>
-                        4+ <sub className='font-semibold text-base'>years of experience</sub>
+                        2+ <sub className='font-semibold text-base'>years of experience</sub>
                     </p>
                 </ItemLayout>
                 <ItemLayout className={'col-span-full xs:col-span-6 lg:col-span-4 !p-0'}>

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import bg from "../../../../public/background/contact-background.png";
+import bg from "../../../../public/background/contact-bg.jpg";
 import Form from "@/components/contact/Form";
 
 
@@ -12,7 +12,7 @@ export default function Contact() {
                 sizes="100vw"
                 src={bg}
                 alt="background-image"
-                className="-z-50 fixed top-0 left-0 w-full h-full object-cover object-center opacity-50"
+                className="-z-50 fixed top-0 left-0 w-full h-full object-cover object-center"
             />
 
             <article className='relative w-full flex flex-col items-center justify-center py-8 sm:py-0 space-y-8'>

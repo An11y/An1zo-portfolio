@@ -1,12 +1,11 @@
 import Image from "next/image";
-import bg from "../../public/background/home-background.png";
+import bg from "../../public/background/home-bg.jpg";
 import RenderModel from "@/components/RenderModel";
-// import Wizard from "@/components/models/Wizard";
-
-import dynamic from "next/dynamic";
 import Navigation from "@/components/navigation";
 import AutoScrollingText from "@/components/AutoScrollingText";
 import {Main} from "@/components/models/Main";
+import dynamic from "next/dynamic";
+
 
 
 export default function Home() {
@@ -19,7 +18,7 @@ export default function Home() {
                 src={bg}
                 alt="background-image"
                 fill
-                className="absolute -z-50 w-full h-full object-cover object-center opacity-50"
+                className="absolute -z-50 w-full h-full object-cover object-center"
             />
 
             {/* 3D-модель на заднем плане, но с интерактивностью */}
