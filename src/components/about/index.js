@@ -42,7 +42,7 @@ const AboutDetails = () => {
                 </ItemLayout>
                 <ItemLayout className={'col-span-full'}>
                     <img className='w-full h-auto'
-                         src="https://skillicons.dev/icons?i=js,html,css"
+                         src="https://skillicons.dev/icons?i=js,html,css,react,figma,git,github,vscode,webstorm,vite,threejs,tailwind,py,pycharm,pr,ps,ae,notion,mongodb,less,latex,java,instagram,idea,django,bots"
                          alt="An11y" loading='lazy'/>
                 </ItemLayout>
                 <ItemLayout className={'col-span-full md:col-span-6 !p-0'}>

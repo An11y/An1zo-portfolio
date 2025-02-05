@@ -19,9 +19,8 @@ export default function Home() {
             <Image
                 priority
                 sizes="100vw"
-                src={bg}
                 alt="background-image"
-                className="-z-50 fixed top-0 left-0 w-full h-full object-cover object-center opacity-50"
+                className="-z-50 fixed top-0 bg-black left-0 w-full h-full object-cover object-center opacity-50"
             />
 
             <ProjectList projects={projectsData}/>

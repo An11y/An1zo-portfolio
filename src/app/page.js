@@ -5,28 +5,36 @@ import RenderModel from "@/components/RenderModel";
 
 import dynamic from "next/dynamic";
 import Navigation from "@/components/navigation";
-const Wizard = dynamic(() => import("@/components/models/Wizard"), {
-    ssr: false,
-});
+import AutoScrollingText from "@/components/AutoScrollingText";
+import {Main} from "@/components/models/Main";
+
 
 export default function Home() {
     return (
         <main className="flex min-h-screen flex-col items-center justify-between relative">
+            {/* Фоновое изображение */}
             <Image
                 priority
                 sizes="100vw"
                 src={bg}
                 alt="background-image"
                 fill
-                className="-z-50 w-full h-full object-cover object-center opacity-50"
+                className="absolute -z-50 w-full h-full object-cover object-center opacity-50"
             />
 
-            <div className="w-full h-screen">
-                <Navigation />
+            {/* 3D-модель на заднем плане, но с интерактивностью */}
+            <div className="absolute inset-0">
                 <RenderModel>
-                    <Wizard />
+                    <Main />
                 </RenderModel>
             </div>
+
+            {/* UI, который не блокирует модель */}
+            <div className="relative w-full h-screen pointer-events-none">
+                <Navigation />
+            </div>
+
+            <AutoScrollingText />
         </main>
     );
 }

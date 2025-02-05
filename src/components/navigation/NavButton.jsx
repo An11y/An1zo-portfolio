@@ -36,47 +36,68 @@ const item = {
 
 const NavLink = motion(Link)
 
-const NavButton = ({x, y, label, link, icon, newTab, labelDirection="right"}) => {
+const NavButton = ({ x, y, label, link, icon, newTab, labelDirection = "right" }) => {
     return (
         <ResponsiveComponent>
-            {({size}) => {
-                return size && size >= 480 ?
-                    <div className="absolute cursor-pointer z-50" style={{transform: `translate(${x}, ${y}`}}>
-                        <NavLink variants={item} href={link} target={newTab ? '_blank' : '_self'}
-                              className='text-foreground rounded-full flex items-center justify-center custom-bg'
-                              aria-label={label} name={label}>
-                            <span className='relative w-14 h-14 p-4 animate-spin-slow-reverse group-hover:pause hover:text-accent'>
+            {({ size }) => {
+                return size && size >= 480 ? (
+                    <div
+                        className="absolute z-[100] pointer-events-auto"
+                        style={{ transform: `translate(${x}, ${y})` }}
+                    >
+                        <NavLink
+                            variants={item}
+                            href={link}
+                            target={newTab ? "_blank" : "_self"}
+                            className="text-foreground rounded-full flex items-center justify-center custom-bg relative"
+                            aria-label={label}
+                            name={label}
+                        >
+                            <span className="relative w-14 h-14 p-4 hover:text-accent">
                                 {getIcon(icon)}
-                                <span className="peer bg-transparent absolute top-0 left-0 w-full h-full"/>
-                                <span
-                                    className="absolute hidden peer-hover:block px-2 py-2 left-full mx-2 top-1/2 -translate-y-1/2 bg-background text-foreground text-sm rounded-md shadow-lg whitespace-nowrap hover:pause">
-                                {label}
+                                <span className="absolute top-0 left-0 w-full h-full" />
+                                <span className="absolute hidden peer-hover:block px-2 py-2 left-full mx-2 top-1/2 -translate-y-1/2 bg-background text-foreground text-sm rounded-md shadow-lg whitespace-nowrap">
+                                    {label}
                                 </span>
                             </span>
                         </NavLink>
                     </div>
-
-                    :
-
-                    <div className=" w-fit  cursor-pointer z-50">
-                        <NavLink variants={item} href={link} target={newTab ? '_blank' : '_self'}
-                              className='text-foreground rounded-full flex items-center justify-center custom-bg'
-                              aria-label={label} name={label}>
-                            <span className='relative w-10 h-10 xs:w-14 xs:h-14 p-2 xs:p-4 hover:text-accent'>
+                ) : (
+                    <div className="w-fit z-[100] relative pointer-events-auto">
+                        <NavLink
+                            variants={item}
+                            href={link}
+                            target={newTab ? "_blank" : "_self"}
+                            className="text-foreground rounded-full flex items-center justify-center custom-bg relative"
+                            aria-label={label}
+                            name={label}
+                        >
+                            <span className="relative w-10 h-10 xs:w-14 xs:h-14 p-2 xs:p-4 hover:text-accent">
                                 {getIcon(icon)}
-                                <span className="peer bg-transparent absolute top-0 left-0 w-full h-full"/>
+                                <span className="absolute top-0 left-0 w-full h-full" />
                                 <span
-                                    className={clsx("absolute hidden peer-hover:block px-2 py-2 left-full mx-2 top-1/2 -translate-y-1/2 bg-background text-foreground text-sm rounded-md shadow-lg whitespace-nowrap", labelDirection === "left" ? "right-full left-auto" : "")}>
-                                {label}
+                                    className={clsx(
+                                        "absolute hidden px-2 py-2 left-full mx-2 top-1/2 -translate-y-1/2 bg-background text-foreground text-sm rounded-md shadow-lg whitespace-nowrap",
+                                        labelDirection === "left" ? "right-full left-auto" : ""
+                                    )}
+                                    onTouchStart={(e) => {
+                                        e.currentTarget.style.display = "block";
+                                        setTimeout(() => {
+                                            e.currentTarget.style.display = "none";
+                                        }, 2000);
+                                    }}
+                                >
+                                    {label}
                                 </span>
                             </span>
                         </NavLink>
                     </div>
-
+                );
             }}
-
-
         </ResponsiveComponent>
-    )
-}
+    );
+};
+
+
+
 export default NavButton
