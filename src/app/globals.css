@@ -20,7 +20,9 @@
         @apply bg-background/20 border border-accent/30 border-solid backdrop-blur-[6px] shadow-glass-inset hover:shadow-glass-sm;
     }
 
-
+    .animate-scroll {
+        animation: scroll 60s linear infinite; /* Adjusted duration for faster scroll */
+    }
 }
 
 @keyframes move {
@@ -29,5 +31,11 @@
     }
     100% {
         transform: translate(100px, 100px);
+    }
+}
+
+@keyframes scroll {
+    to {
+        transform: translateX(calc(-100% - 250px));
     }
 }
