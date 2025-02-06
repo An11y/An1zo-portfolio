@@ -17,32 +17,6 @@ const RenderModel = ({ children, className }) => {
         return () => window.removeEventListener("resize", checkMobile);
     }, []);
 
-    useEffect(() => {
-        if (!containerRef.current) return;
-
-        const updateScale = () => {
-            const { width, height } = containerRef.current.getBoundingClientRect();
-            let newScale = Math.min(width, height) / 600; // Базовое масштабирование
-
-            // Дополнительное уменьшение на мобильных устройствах
-            if (isMobile) {
-                newScale *= 0.9; // Уменьшаем на 20%
-            }
-
-            setScale(newScale);
-        };
-
-        const resizeObserver = new ResizeObserver(updateScale);
-        resizeObserver.observe(containerRef.current);
-        window.addEventListener("resize", updateScale);
-
-        updateScale(); // Вызываем сразу при монтировании
-
-        return () => {
-            resizeObserver.disconnect();
-            window.removeEventListener("resize", updateScale);
-        };
-    }, [isMobile]);
 
     return (
         <div className="w-full h-screen flex justify-center items-center relative">
