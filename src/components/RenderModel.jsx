@@ -7,7 +7,15 @@ import React, { Suspense, useState, useRef, useEffect } from "react";
 const RenderModel = ({ children, className }) => {
     const [isHovered, setIsHovered] = useState(false);
     const [scale, setScale] = useState(1);
+    const [isMobile, setIsMobile] = useState(false); // состояние для проверки мобильного устройства
     const containerRef = useRef(null);
+
+    useEffect(() => {
+        const checkMobile = () => setIsMobile(window.innerWidth < 640);
+        checkMobile();
+        window.addEventListener("resize", checkMobile);
+        return () => window.removeEventListener("resize", checkMobile);
+    }, []);
 
     useEffect(() => {
         if (!containerRef.current) return;
@@ -17,8 +25,8 @@ const RenderModel = ({ children, className }) => {
             let newScale = Math.min(width, height) / 600; // Базовое масштабирование
 
             // Дополнительное уменьшение на мобильных устройствах
-            if (window.innerWidth < 640) {
-                newScale *= 0.8; // Уменьшаем на 30%
+            if (isMobile) {
+                newScale *= 0.9; // Уменьшаем на 20%
             }
 
             setScale(newScale);
@@ -34,14 +42,13 @@ const RenderModel = ({ children, className }) => {
             resizeObserver.disconnect();
             window.removeEventListener("resize", updateScale);
         };
-    }, []);
+    }, [isMobile]);
 
     return (
-        <div className="w-full h-screen flex justify-center items-center relative pointer-events-none">
-            {/* Контейнер для 3D-модели */}
+        <div className="w-full h-screen flex justify-center items-center relative">
             <div
                 ref={containerRef}
-                className="relative w-full max-w-[600px] h-full min-h-[300px] sm:h-[800px] pointer-events-auto"
+                className="relative w-full max-w-[600px] h-full min-h-[300px]"
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
             >
@@ -55,7 +62,8 @@ const RenderModel = ({ children, className }) => {
                         <group scale={[scale, scale, scale]}>{children}</group>
                     </Suspense>
                     <Environment preset="dawn" />
-                    <OrbitControls enableZoom={isHovered} />
+                    {/* OrbitControls активен только на не мобильных устройствах */}
+                    {!isMobile && <OrbitControls enableZoom={isHovered} />}
                 </Canvas>
             </div>
         </div>

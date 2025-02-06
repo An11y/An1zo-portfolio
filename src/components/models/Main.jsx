@@ -15,8 +15,8 @@ export function Main(props) {
     const { actions } = useAnimations(animations, group)
     return (
         <group ref={group} {...props} dispose={null}
-               position={[0, -2.4, 0]}
-               scale={[1.05, 1.05, 1.05]}
+               position={[0, -2, 0]}
+               scale={[0.9, 0.9, 0.9]}
         >
             <group name="Sketchfab_Scene">
                 <group name="Sketchfab_model" rotation={[-Math.PI / 2, 0, 0]}>

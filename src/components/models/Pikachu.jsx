@@ -8,7 +8,8 @@ export function Pikachu(props) {
     return (
         <group {...props}
                dispose={null}
-               position={[0, 1.5, 0]}
+               position={[0, 1.6, 0]}
+               scale={[0.9, 0.9, 0.9]}
                rotation={[Math.PI / 15, 0, 0]}
         >
             <mesh
