@@ -2,7 +2,6 @@
 import React from 'react';
 import {useForm} from 'react-hook-form';
 import emailjs from "@emailjs/browser";
-import {form} from "framer-motion/m";
 import {toast, Toaster} from "sonner";
 import {motion} from "framer-motion";
 import Link from "next/link";
@@ -25,7 +24,7 @@ const item = {
 const NavLink = motion(Link)
 
 export default function Form() {
-    const {register, handleSubmit, formState: {errors}} = useForm();
+    const {register, handleSubmit, formState: {errors}, reset} = useForm();
 
     const sendEmail = (params) => {
 
@@ -50,7 +49,8 @@ export default function Form() {
                     toast.success('Message sent successfully!', {
                         id: toastId,
                         duration: 5000,
-                    })
+                    });
+                    reset(); // Clear the form fields
                 },
                 () => {
                     toast.error('Failed to send message!', {
@@ -79,7 +79,7 @@ export default function Form() {
                 initial="hidden"
                 animate="show"
                 onSubmit={handleSubmit(onSubmit)}
-                  className='max-w-md w-full flex flex-col items-center justify-center space-y-4'
+                className='max-w-md w-full flex flex-col items-center justify-center space-y-4'
             >
                 <motion.input
                     variants={item}
@@ -87,13 +87,13 @@ export default function Form() {
                     required: 'This field is required!',
                     minLength: {value: 3, message: 'Name should be at least 3 characters long!'}
                 })}
-                       className='w-full p-2 rounded-md shadow-lg text-foreground focus outline-no ne focus:ring-2 focus:ring-accent/50 custom-bg'
+                    className='w-full p-2 rounded-md shadow-lg text-foreground focus outline-no ne focus:ring-2 focus:ring-accent/50 custom-bg'
                 />
                 {
                     errors.Name && <span className='inline-block self-start text-accent'>{errors.Name.message}</span>
                 }
                 <motion.input variants={item} type="email" placeholder="Email" {...register("Email", {required: 'This field is required!', pattern: /^\S+@\S+$/i})}
-                       className='w-full p-2 rounded-md shadow-lg text-foreground focus outline-none focus:ring-2 focus:ring-accent/50 custom-bg'
+                              className='w-full p-2 rounded-md shadow-lg text-foreground focus outline-none focus:ring-2 focus:ring-accent/50 custom-bg'
                 />
                 {
                     errors.Email && <span className='inline-block self-start text-accent'>{errors.Email.message}</span>
@@ -115,8 +115,8 @@ export default function Form() {
                 }
 
                 <motion.input variants={item} value='Cast your Message!'
-                       className='px-10 py-4 rounded-md shadow-lg bg-background border border-accent/30 border-solid hover:shadow-glass-sm backdrop-blur-sm text-foreground focus:outline-none focus:ring-2 focus:ring-accent/50 cursor-pointer capitalize '
-                       type="submit"/>
+                              className='px-10 py-4 rounded-md shadow-lg bg-background border border-accent/30 border-solid hover:shadow-glass-sm backdrop-blur-sm text-foreground focus:outline-none focus:ring-2 focus:ring-accent/50 cursor-pointer capitalize '
+                              type="submit"/>
             </motion.form>
         </>
     );
