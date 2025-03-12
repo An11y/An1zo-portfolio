@@ -3,13 +3,6 @@
 export const projectsData = [
   {
     id: 1,
-    name: "Portfolio",
-    description: "Fortfolio website",
-    date: "2025-02-06",
-    demoLink: "https://an1zo-portfolio.vercel.app",
-  },
-  {
-    id: 2,
     name: "COMING SOON",
     description: "In the process of completion",
     date: "2025-02-06",
