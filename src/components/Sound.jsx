@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { Volume2, VolumeX } from "lucide-react";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
 const Modal = ({ onClose, toggle }) => {
@@ -56,7 +56,7 @@ const Sound = () => {
     const [isPlaying, setIsPlaying] = useState(false);
     const [showModal, setShowModal] = useState(false);
 
-    const handleFirstUserInteraction = () => {
+    const handleFirstUserInteraction = useCallback(() => {
         const musicConsent = localStorage.getItem("musicConsent");
         if (musicConsent === "true" && !isPlaying) {
             audioRef.current.play();
@@ -66,7 +66,7 @@ const Sound = () => {
         ["click", "keydown", "touchstart"].forEach((event) =>
             document.removeEventListener(event, handleFirstUserInteraction)
         );
-    };
+    }, [isPlaying]);
 
     useEffect(() => {
         const consent = localStorage.getItem("musicConsent");
@@ -87,7 +87,7 @@ const Sound = () => {
         } else {
             setShowModal(true);
         }
-    }, []);
+    }, [handleFirstUserInteraction]);
 
     const toggle = () => {
         const newState = !isPlaying;

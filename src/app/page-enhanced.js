@@ -85,8 +85,8 @@ export default function Home() {
                             Ready to Bring Your Ideas to Life?
                         </h2>
                         <p className="text-muted mb-8 max-w-2xl mx-auto">
-                            Let's collaborate to create something amazing together. 
-                            From concept to deployment, I'll help you build exceptional digital experiences.
+                            Let&apos;s collaborate to create something amazing together. 
+                            From concept to deployment, I&apos;ll help you build exceptional digital experiences.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <a

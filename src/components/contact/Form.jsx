@@ -88,7 +88,7 @@ export default function Form() {
             >
                 <motion.div variants={item} className="text-center mb-8">
                     <h2 className="text-3xl font-bold text-foreground mb-2">Get In Touch</h2>
-                    <p className="text-muted">Let's discuss your next project or just say hello!</p>
+                    <p className="text-muted">Let&apos;s discuss your next project or just say hello!</p>
                 </motion.div>
 
                 <form

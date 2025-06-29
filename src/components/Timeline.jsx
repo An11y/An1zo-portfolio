@@ -161,7 +161,7 @@ const Timeline = () => {
             
             <div className="ml-16 md:ml-0 md:text-center">
               <div className="bg-gradient-to-br from-accent/10 to-accent/5 backdrop-blur-sm border border-accent/30 rounded-xl p-6">
-                <h3 className="text-xl font-bold text-foreground mb-2">🚀 What's Next?</h3>
+                <h3 className="text-xl font-bold text-foreground mb-2">🚀 What&apos;s Next?</h3>
                 <p className="text-muted text-sm">
                   Continuously learning new technologies, taking on bigger challenges, 
                   and helping more clients achieve their digital goals.

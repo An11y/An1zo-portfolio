@@ -1,12 +1,12 @@
 "use client";
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useMemo } from 'react';
 import { motion } from 'framer-motion';
 
 const SkillsCloud = () => {
   const [hoveredSkill, setHoveredSkill] = useState(null);
   const containerRef = useRef(null);
 
-  const skills = [
+  const skills = useMemo(() => [
     { name: 'React', level: 90, size: 'text-2xl md:text-3xl', color: 'text-blue-400' },
     { name: 'Next.js', level: 85, size: 'text-xl md:text-2xl', color: 'text-gray-300' },
     { name: 'JavaScript', level: 95, size: 'text-3xl md:text-4xl', color: 'text-yellow-400' },
@@ -23,7 +23,7 @@ const SkillsCloud = () => {
     { name: 'Framer Motion', level: 85, size: 'text-lg md:text-xl', color: 'text-purple-500' },
     { name: 'PostgreSQL', level: 75, size: 'text-base md:text-lg', color: 'text-blue-700' },
     { name: 'Express.js', level: 80, size: 'text-base md:text-lg', color: 'text-gray-400' }
-  ];
+  ], []);
 
   const generateRandomPosition = () => ({
     x: Math.random() * 80 + 10, // 10% to 90% of container width
@@ -34,7 +34,7 @@ const SkillsCloud = () => {
 
   useEffect(() => {
     setSkillPositions(skills.map(() => generateRandomPosition()));
-  }, []);
+  }, [skills]);
 
   const handleSkillHover = (skill, index) => {
     setHoveredSkill({ ...skill, index });

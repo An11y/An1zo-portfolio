@@ -13,7 +13,7 @@ export default function Contact() {
                 <div className='flex flex-col items-center justify-center space-y-8 w-full max-w-4xl px-4'>
                     <div className="text-center space-y-6">
                         <h1 className='text-foreground font-bold text-center text-4xl md:text-5xl lg:text-6xl'>
-                            Let's <span className="gradient-text">Connect</span>
+                            Let&apos;s <span className="gradient-text">Connect</span>
                         </h1>
                         <p className='text-center font-light text-base md:text-lg text-muted max-w-2xl mx-auto leading-relaxed'>
                             Frontend React Developer with 2+ years of commercial experience. Ready to help bring your ideas to life 
@@ -62,7 +62,7 @@ export default function Contact() {
                                 </div>
                             </div>
                             <div>
-                                <h3 className="text-xl font-semibold text-foreground mb-4">Let's Discuss</h3>
+                                <h3 className="text-xl font-semibold text-foreground mb-4">Let&apos;s Discuss</h3>
                                 <ul className="space-y-2 text-muted">
                                     <li className="flex items-center">
                                         <span className="w-2 h-2 bg-accent rounded-full mr-3"></span>

@@ -96,7 +96,7 @@ const Testimonials = () => {
                 {renderStars(testimonials[currentIndex].rating)}
               </div>
               <blockquote className="text-lg text-foreground mb-6 italic leading-relaxed">
-                "{testimonials[currentIndex].text}"
+                &ldquo;{testimonials[currentIndex].text}&rdquo;
               </blockquote>
               <div>
                 <h4 className="font-semibold text-foreground">
@@ -166,7 +166,7 @@ const Testimonials = () => {
           href="/contact"
           className="inline-flex items-center px-6 py-3 bg-accent text-background font-semibold rounded-full hover:bg-accent/90 transition-all duration-300 shadow-lg hover:shadow-xl"
         >
-          Let's Work Together
+          Let&apos;s Work Together
           <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
           </svg>
