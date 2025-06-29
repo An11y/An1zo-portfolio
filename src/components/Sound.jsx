@@ -6,30 +6,47 @@ import { createPortal } from "react-dom";
 
 const Modal = ({ onClose, toggle }) => {
     return createPortal(
-        <div className="fixed inset-0 bg-background/60 backdrop-blur-sm flex items-center justify-center z-50">
-            <div
-                className="bg-background/20 border border-accent/30 border-solid backdrop-blur-[6px]
-            py-8 px-6 xs:px-10 sm:px-16 rounded shadow-glass-inset text-center space-y-8
-            "
+        <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50"
+        >
+            <motion.div
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.8, opacity: 0 }}
+                transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                className="bg-background/90 border border-accent/30 backdrop-blur-md rounded-2xl 
+                py-8 px-6 xs:px-10 sm:px-16 shadow-2xl text-center space-y-6 max-w-md mx-4"
             >
-                <p className="font-light">Are you seriously going to turn on the background music? It&apos;s gonna mess with your head!</p>
-                <div className="flex items-center justify-center space-x-4">
-                    <button
+                <div className="text-4xl mb-4">🎵</div>
+                <h3 className="text-xl font-bold text-foreground mb-2">Background Music</h3>
+                <p className="font-light text-muted">
+                    Would you like to enable background music for a more immersive experience?
+                </p>
+                <div className="flex items-center justify-center space-x-4 pt-4">
+                    <motion.button
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
                         onClick={toggle}
-                        className="px-4 py-2 border border-accent/30 border-solid hover:shadow-glass-sm rounded mr-2"
+                        className="px-6 py-3 bg-accent text-background font-medium rounded-xl 
+                        hover:bg-accent/90 transition-colors shadow-lg"
                     >
-                        Yes
-                    </button>
-                    <button
+                        Yes, Enable
+                    </motion.button>
+                    <motion.button
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
                         onClick={onClose}
-                        className="px-4 py-2 border border-accent/30 border-solid hover:shadow-glass-sm rounded"
+                        className="px-6 py-3 border border-accent/30 text-foreground rounded-xl 
+                        hover:bg-accent/10 transition-colors"
                     >
-                        No
-                    </button>
+                        No, Thanks
+                    </motion.button>
                 </div>
-            </div>
-        </div>,
-
+            </motion.div>
+        </motion.div>,
         document.getElementById("my-modal")
     );
 };
@@ -81,7 +98,7 @@ const Sound = () => {
         setShowModal(false);
     };
     return (
-        <div className="fixed top-4 right-2.5 xs:right-4 z-50 group">
+        <div className="fixed bottom-4 right-4 z-50 group">
             {showModal && (
                 <Modal onClose={() => setShowModal(false)} toggle={toggle} />
             )}
@@ -95,7 +112,11 @@ const Sound = () => {
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ delay: 1 }}
-                className="w-10 h-10 xs:w-14 xs:h-14 text-foreground rounded-full flex items-center justify-center cursor-pointer z-50 p-2.5 xs:p-4 custom-bg"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                className="w-12 h-12 xs:w-14 xs:h-14 text-foreground rounded-full flex items-center justify-center cursor-pointer z-50 p-3 xs:p-4 
+                bg-background/20 border border-accent/30 backdrop-blur-sm hover:bg-accent/20 hover:border-accent/50 
+                transition-all duration-300 shadow-lg hover:shadow-glow"
                 aria-label={"Sound control button"}
                 name={"Sound control button"}
             >

@@ -75,7 +75,15 @@ const NavButton = ({
                        icon,
                        newTab,
                        labelDirection = "right",
+                       onClick
                    }) => {
+    const handleClick = (e) => {
+        if (onClick) {
+            e.preventDefault();
+            onClick();
+        }
+    };
+
     return (
         <ResponsiveComponent>
             {({ size }) => {
@@ -88,6 +96,7 @@ const NavButton = ({
                             variants={item}
                             href={link}
                             target={newTab ? "_blank" : "_self"}
+                            onClick={handleClick}
                             className="text-foreground  rounded-full flex items-center justify-center
         custom-bg
         "
@@ -113,6 +122,7 @@ const NavButton = ({
                             variants={item}
                             href={link}
                             target={newTab ? "_blank" : "_self"}
+                            onClick={handleClick}
                             className="text-foreground  rounded-full flex items-center justify-center
         custom-bg
         "

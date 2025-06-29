@@ -1,10 +1,11 @@
 "use client"
-import React from 'react'
+import React, { useState } from 'react'
 import {BtnList} from "@/app/data";
 import NavButton from "@/components/navigation/NavButton";
 import useScreenSize from "@/components/hooks/useScreenSize";
 import ResponsiveComponent from "@/components/ResponsiveComponent";
 import {motion} from "framer-motion";
+import ResumeModal from "@/components/ResumeModal";
 
 const container = {
     hidden: {opacity: 0},
@@ -14,6 +15,7 @@ const container = {
 }
 
 const Navigation = () => {
+    const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
     const angleIncrement = 360 / BtnList.length;
     const size = useScreenSize();
     console.log(size);
@@ -21,8 +23,13 @@ const Navigation = () => {
     const isLarge = size > 1024;
     const isMedium = size >= 768;
 
+    const handleResumeClick = () => {
+        setIsResumeModalOpen(true);
+    };
+
     return (
-        <div className="w-full fixed h-screen flex items-center justify-center">
+        <>
+            <div className="w-full fixed h-screen flex items-center justify-center z-50">
             <ResponsiveComponent>
                 {({size}) => {
 
@@ -42,7 +49,13 @@ const Navigation = () => {
                                     const x = `calc(${radius} * ${Math.cos(angleRad)})`;
                                     const y = `calc(${radius} * ${Math.sin(angleRad)})`;
                                     return (
-                                        <NavButton key={btn.label} x={x} y={y} {...btn}/>
+                                        <NavButton 
+                                            key={btn.label} 
+                                            x={x} 
+                                            y={y} 
+                                            {...btn}
+                                            onClick={btn.icon === 'resume' ? handleResumeClick : undefined}
+                                        />
                                     );
                                 })
                             }
@@ -60,7 +73,13 @@ const Navigation = () => {
                                 {
                                     BtnList.slice(0, BtnList.length/2).map((btn) => {
                                         return (
-                                            <NavButton key={btn.label} x={0} y={0 } {...btn}/>
+                                            <NavButton 
+                                                key={btn.label} 
+                                                x={0} 
+                                                y={0} 
+                                                {...btn}
+                                                onClick={btn.icon === 'resume' ? handleResumeClick : undefined}
+                                            />
                                         );
                                     })
                                 }
@@ -74,7 +93,14 @@ const Navigation = () => {
                                 {
                                     BtnList.slice(BtnList.length /2, BtnList.length).map((btn ) => {
                                         return (
-                                            <NavButton key={btn.label} x={0} y={0} {...btn} labelDirection="left"/>
+                                            <NavButton 
+                                                key={btn.label} 
+                                                x={0} 
+                                                y={0} 
+                                                {...btn} 
+                                                labelDirection="left"
+                                                onClick={btn.icon === 'resume' ? handleResumeClick : undefined}
+                                            />
                                         );
                                     })
                                 }
@@ -82,7 +108,14 @@ const Navigation = () => {
                         </>
                 }}
             </ResponsiveComponent>
-        </div>
+            </div>
+            
+            {/* Resume Modal */}
+            <ResumeModal 
+                isOpen={isResumeModalOpen} 
+                onClose={() => setIsResumeModalOpen(false)} 
+            />
+        </>
     )
 }
 
